@@ -1,62 +1,143 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Username Generator</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body class="bg-dark">
-    <nav class="bg-nav d-flex align-items-center justify-content-between m-2 w-75 rounded-5">
-        <!--ADD ITEMS TO NAVIGATION BAR-->
-    </nav> 
-    <main class="w-100 h-100 d-flex flex-column align-items-center justify-content-start">
-        <h1 class="mt-5">Username Generator</h1>
-        <section class="w-100 h-75 d-flex flex-column align-items-center pt-4 justify-content-start">
-            <div class="form-control rounded-5 px-2 d-flex align-items-center justify-content-between border-5 w-50 preview-div containerPreviewPerzonalzed" >
-                <h2 class="m-1 fs-5" id="usernameResult">Your Username Display Here</h2>
-                <div class="d-flex align-items-center justify-content-between btnPerzonalized">
-                    <button class="btn border-success rounded-5 btn-success">Copy</button> 
-                    <button id="btnGenerate" class="btn btn-primary rounded-5">Generate</button>
-                </div>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Find your next online identity. Create, customize, and copy memorable usernames in seconds."
+    />
+    <meta name="theme-color" content="#212529" />
+    <title>Username Studio — Make a name for yourself</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="shell">
+      <a class="brand" href="./"
+        ><span class="brand-icon">u.</span>username<span class="brand-light"
+          >studio</span
+        ></a
+      ><span class="header-note"
+        ><i></i> A little identity, a lot of possibility</span
+      >
+    </header>
+    <main class="shell">
+      <section class="intro">
+        <div class="eyebrow">YOUR NEXT ONLINE IDENTITY</div>
+        <h1>
+          Make a name<br />for <em>yourself.</em
+          ><span class="spark" aria-hidden="true">✳</span>
+        </h1>
+        <p>
+          A fresh start deserves a great username. Mix a few words,<br
+            class="desktop"
+          />
+          add your own twist, and find the one that feels like you.
+        </p>
+      </section>
+      <section class="workspace" aria-label="Username generator">
+        <div class="settings panel">
+          <div class="section-heading">
+            <span class="step">01</span>
+            <h2>Make it yours</h2>
+            <span class="optional">OPTIONAL</span>
+          </div>
+          <form id="generator">
+            <p class="muted">Add your ingredients, or leave it to chance.</p>
+            <label for="adjective">An adjective <span>Set the mood</span></label
+            ><input
+              id="adjective"
+              maxlength="20"
+              placeholder="e.g. Cosmic"
+              autocomplete="off"
+            /><label for="noun">A noun <span>Find your thing</span></label
+            ><input
+              id="noun"
+              maxlength="20"
+              placeholder="e.g. Voyager"
+              autocomplete="off"
+            />
+            <div class="field-row">
+              <div>
+                <label for="number">Number</label
+                ><input
+                  id="number"
+                  inputmode="numeric"
+                  pattern="[0-9]{0,6}"
+                  maxlength="6"
+                  placeholder="e.g. 24"
+                  title="Use up to 6 digits"
+                />
+              </div>
+              <div>
+                <label for="separator">Separator</label
+                ><select id="separator">
+                  <option value="">None</option>
+                  <option value="_">Underscore _</option>
+                  <option value=".">Dot .</option>
+                  <option value="-">Hyphen -</option>
+                </select>
+              </div>
             </div>
-
-            <div class="d-flex w-50  justify-content-center conditionAndItemsPerzonalized">
-                <div class="bg-light m-3 w-50 p-3 rounded-4 container-fluid containerPerzonalized ">
-                    <h5 class="text-dark">Enter your conditions:</h5>
-                    <div class="form-control w-100 d-flex align-items-center justify-content-between mt-3 mb-3">
-                        <label for="adjective">Adjective:</label> 
-                        <input type="text" id="adjective" placeholder="Example: Sky" class="w-75 rounded-2 border-1 border-dark p-1">
-                    </div>
-                    <div class="form-control w-100 d-flex align-items-center justify-content-between mb-3">
-                        <label for="noun">Noun:</label> 
-                        <input type="text" id="noun" placeholder="Example: Blue" class="w-75 rounded-2 border-1 border-dark p-1 ">
-                    </div>
-                    <div class="form-control w-100 d-flex align-items-center justify-content-between mb-3">
-                        <label for="number">Number:</label> 
-                        <input type="number" id="number" placeholder="Example: 12" class="w-75 rounded-2 border-1 border-dark p-1">
-                    </div>
-                    <div class="form-control w-100 d-flex align-items-center justify-content-between mb-3">
-                        <label for="separator">Separator:</label> 
-                        <input type="text" id="separator" placeholder="Example: _, - () ." class="w-75 rounded-2 border-1 border-dark p-1">
-                    </div>
-                </div>
-                <div class="bg-light m-3 w-50 p-3 rounded-4 container-fluid containerPerzonalized">
-                    <h5 class="text-dark">Here your usernames:</h5>
-                    <ul class="text-dark" id="sugestedUsers">
-                       
-                    </ul>
-                    
-                </div>
+            <button class="primary" id="btnGenerate">
+              Generate username <span aria-hidden="true">↗</span>
+            </button>
+          </form>
+          <p class="privacy">◎ Created in your browser. No sign-up needed.</p>
+        </div>
+        <div class="results">
+          <section class="preview panel">
+            <div class="preview-top">
+              <span class="eyebrow">YOUR NEXT ALTER EGO</span
+              ><span class="live-dot" aria-hidden="true"></span>
             </div>
-            
-        </section>
-        <!-- <footer class="bg-secondary w-75 h-25 rounded-4 container-fluid d-flex align-items-cente justify-content-center">
-            ADD ITEMS TO FOOTER
-        </footer> -->
+            <div class="avatar" aria-hidden="true">@</div>
+            <p id="usernameResult" aria-live="polite">CosmicVoyager</p>
+            <p class="preview-note">A name with a little more you.</p>
+            <button id="copy" class="copy">
+              Copy username <span aria-hidden="true">▢</span>
+            </button>
+            <p id="status" class="status" role="status"></p>
+            <div class="preview-bottom">
+              <span>Made to stand out.</span><span aria-hidden="true">✦</span
+              ><span>Ready to make yours.</span>
+            </div>
+          </section>
+          <section class="history panel">
+            <div class="section-heading">
+              <span class="step">02</span>
+              <h2>Your shortlist</h2>
+              <button class="text-button" id="clear" disabled>Clear</button>
+            </div>
+            <ul id="suggestedUsers">
+              <li class="empty">
+                Your latest ideas will appear here. Keep exploring.
+              </li>
+            </ul>
+          </section>
+        </div>
+      </section>
+      <section class="notes">
+        <div>
+          <span>01 / MIX</span>
+          <p>Your words. Your personality.</p>
+        </div>
+        <div>
+          <span>02 / DISCOVER</span>
+          <p>A new combination with every click.</p>
+        </div>
+        <div>
+          <span>03 / MAKE IT YOURS</span>
+          <p>Copy your favorite and try it out.</p>
+        </div>
+      </section>
     </main>
-    <script src="./script.js"></script>
-</body>
+    <footer class="shell">
+      <span
+        >Username Studio
+        <span class="muted">/ A project by Francis Martinez</span></span
+      ><span>Availability varies by platform.</span>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>
